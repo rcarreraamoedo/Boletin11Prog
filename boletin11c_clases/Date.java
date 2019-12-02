@@ -7,7 +7,7 @@ package boletin11c_clases;
 
 /**
  *
- * @author rcarreraamoedo
+ * @author usuario
  */
 public class Date {
     private int dia;
@@ -20,12 +20,20 @@ public class Date {
         any = a;
     }
 
+    public Date() {
+        dia = 0;
+        mes = 0;
+        any = 0000;
+    }
+    
     public int getDia() {
         return dia;
     }
 
-    public void setDia(int d) {
-        dia = d;
+   public void setDia(int d) {
+        if (mirarFecha(d) == true) {
+            dia = d;
+        }
     }
 
     public int getMes() {
@@ -33,7 +41,9 @@ public class Date {
     }
 
     public void setMes(int m) {
-        mes = m;
+        if (m < 13) {
+            mes = m;
+        }
     }
 
     public int getAny() {
@@ -43,7 +53,14 @@ public class Date {
     public void setAny(int a) {
         any = a;
     }
-    
-    
-    
+     public boolean mirarFecha(int dia) {
+        if (((dia < 32 && dia > 0) && (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12))
+                || ((dia < 31 && dia > 0) && (mes == 4 || mes == 6 || mes == 9 || mes == 11))
+                || (((dia < 29 && dia > 0) && (mes == 2)))) {
+            return true;
+        } else {
+            System.out.println("La fecha es incorrecta");
+            return false;
+        }
+     }
 }
